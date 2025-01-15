@@ -1,0 +1,19 @@
+[package]
+name = "mvdis-license-plate-query"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+reqwest = "0.12"
+scraper = { version = "0.22", features = ["atomic"] }
+strum = { version = "0.26", features = ["derive"] }
+reqwest_cookie_store = "0.8"
+ddddocr = { git = "https://github.com/86maid/ddddocr.git", branch = "master" }
+anyhow = "1"
+
+[dev-dependencies]
+anyhow = { version = "1", features = ["backtrace"] }
+futures = "0.3"
+num_cpus = "1.16"
+tokio = { version = "1.43", features = ["full"] }
+tokio-task-pool = "0.1"
