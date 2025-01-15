@@ -62,7 +62,7 @@ async fn main() -> anyhow::Result<()> {
                         let mut query_results = vec![];
                         let mut attempts = 0;
 
-                        // 發送查詢並處理結果
+                        // Send query and retry on captcha error
                         let mut query = loop {
                             match QueryBuilder::new(Arc::clone(&client), options)
                                 .send(Arc::clone(&ocr))
@@ -82,6 +82,7 @@ async fn main() -> anyhow::Result<()> {
                             }
                         };
 
+                        // Next page until no more pages
                         let mut current_page = 1;
                         loop {
                             let result = query.results()?.unwrap();
