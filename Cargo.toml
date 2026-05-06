@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+tokio = { version = "1.43", features = ["full"] }
 reqwest = "0.12"
 scraper = { version = "0.22", features = ["atomic"] }
 strum = { version = "0.26", features = ["derive"] }

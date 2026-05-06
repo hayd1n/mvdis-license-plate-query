@@ -1,7 +1,7 @@
 use strum::EnumIter;
 
 // 車牌樣式
-#[derive(Debug, Copy, Clone, EnumIter)]
+#[derive(Debug, Copy, Clone, EnumIter, PartialEq, Eq, Hash)]
 pub enum PlateVer {
     Old = 1, // 原型式車牌
     New = 2, // 新式車牌
@@ -23,7 +23,7 @@ impl PlateVer {
 }
 
 // 車種別
-#[derive(Debug, Copy, Clone, EnumIter)]
+#[derive(Debug, Copy, Clone, EnumIter, PartialEq, Eq, Hash)]
 pub enum VehicleType {
     Car,        // 汽車
     Motorcycle, // 機車
@@ -49,7 +49,7 @@ impl VehicleType {
 }
 
 // 管轄監理單位
-#[derive(Debug, Copy, Clone, EnumIter)]
+#[derive(Debug, Copy, Clone, EnumIter, PartialEq, Eq, Hash)]
 pub enum Region {
     Taipei = 2,            // 臺北市
     Kaohsiung = 3,         // 高雄市
@@ -86,7 +86,7 @@ impl Region {
 }
 
 // 能源別
-#[derive(Debug, Copy, Clone, EnumIter)]
+#[derive(Debug, Copy, Clone, EnumIter, PartialEq, Eq, Hash)]
 pub enum EnegryType {
     NonElectric, // 非電能
     Electric,    // 電能
@@ -109,7 +109,7 @@ impl EnegryType {
 }
 
 // 車牌別
-#[derive(Debug, Copy, Clone, EnumIter)]
+#[derive(Debug, Copy, Clone, EnumIter, PartialEq, Eq, Hash)]
 pub enum PlateType {
     // 汽車(非電能)
     CarOwn,                  // 自用小客貨車
@@ -304,7 +304,7 @@ impl PlateType {
 }
 
 // 監理站
-#[derive(Debug, Copy, Clone, EnumIter)]
+#[derive(Debug, Copy, Clone, EnumIter, PartialEq, Eq, Hash)]
 pub enum Station {
     // 臺北市
     TaipeiCity = 20, // 臺北市區監理所
@@ -491,7 +491,7 @@ impl Station {
 }
 
 // 領牌地點(窗口地點)
-#[derive(Debug, Copy, Clone, EnumIter)]
+#[derive(Debug, Copy, Clone, EnumIter, PartialEq, Eq, Hash)]
 pub enum WindowNo {
     One = 1,
 }

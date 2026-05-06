@@ -8,6 +8,7 @@ use scraper::{Html, Selector};
 
 pub mod ocr;
 pub mod options;
+pub mod pool;
 
 pub const DEFAULT_BASE_URL: &str = "https://www.mvdis.gov.tw";
 pub const DEFAULT_USER_AGENT: &str = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36";
