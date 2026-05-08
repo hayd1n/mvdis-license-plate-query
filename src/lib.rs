@@ -14,7 +14,7 @@ pub const DEFAULT_BASE_URL: &str = "https://www.mvdis.gov.tw";
 pub const DEFAULT_USER_AGENT: &str = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36";
 
 pub fn default_reqwest_builder() -> reqwest::ClientBuilder {
-    let cookie_store = reqwest_cookie_store::CookieStore::new(None);
+    let cookie_store = reqwest_cookie_store::CookieStore::new();
     let cookie_store = CookieStoreMutex::new(cookie_store);
     let cookie_store = Arc::new(cookie_store);
 
