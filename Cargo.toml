@@ -9,7 +9,7 @@ reqwest = "0.12"
 scraper = { version = "0.22", features = ["atomic"] }
 strum = { version = "0.26", features = ["derive"] }
 reqwest_cookie_store = "0.8"
-ddddocr = { git = "https://github.com/86maid/ddddocr.git", branch = "master" }
+ddddocr = { git = "https://github.com/86maid/ddddocr.git", tag = "v6.0.6" }
 anyhow = "1"
 
 [dev-dependencies]

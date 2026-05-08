@@ -13,10 +13,10 @@ impl Ocr {
     }
 
     pub fn classification_captcha_text(&self, image: &[u8]) -> Result<String, OcrError> {
-        let mut ddddocr = self.ddddocr.lock().map_err(|_| {
+        let ddddocr = self.ddddocr.lock().map_err(|_| {
             OcrError::DdddocrError(anyhow::anyhow!("Failed to acquire lock on OCR"))
         })?;
-        let result = ddddocr.classification(image.to_vec(), false)?;
+        let result = ddddocr.classification(image.to_vec())?;
         Ok(result)
     }
 }
