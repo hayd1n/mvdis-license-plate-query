@@ -1,18 +1,27 @@
-use strum::EnumIter;
+use strum::{AsRefStr, EnumIter, EnumString};
 
 // 車牌樣式
-#[derive(Debug, Copy, Clone, EnumIter, PartialEq, Eq, Hash)]
+#[derive(Debug, Copy, Clone, EnumIter, EnumString, AsRefStr, PartialEq, Eq, Hash)]
+#[strum(serialize_all = "camelCase")]
 pub enum PlateVer {
     Old = 1, // 原型式車牌
     New = 2, // 新式車牌
 }
 
 impl PlateVer {
-    pub fn as_str(&self) -> &str {
+    pub fn value(&self) -> &str {
         match self {
             PlateVer::Old => "1",
             PlateVer::New => "2",
         }
+    }
+
+    pub fn as_str(&self) -> &str {
+        self.as_ref()
+    }
+
+    pub fn from_str(value: &str) -> Option<Self> {
+        value.parse().ok()
     }
     pub fn as_name(&self) -> &str {
         match self {
@@ -23,7 +32,8 @@ impl PlateVer {
 }
 
 // 車種別
-#[derive(Debug, Copy, Clone, EnumIter, PartialEq, Eq, Hash)]
+#[derive(Debug, Copy, Clone, EnumIter, EnumString, AsRefStr, PartialEq, Eq, Hash)]
+#[strum(serialize_all = "camelCase")]
 pub enum VehicleType {
     Car,        // 汽車
     Motorcycle, // 機車
@@ -31,12 +41,20 @@ pub enum VehicleType {
 }
 
 impl VehicleType {
-    pub fn as_str(&self) -> &str {
+    pub fn value(&self) -> &str {
         match self {
             VehicleType::Car => "C",
             VehicleType::Motorcycle => "M",
             VehicleType::Trailer => "T",
         }
+    }
+
+    pub fn as_str(&self) -> &str {
+        self.as_ref()
+    }
+
+    pub fn from_str(value: &str) -> Option<Self> {
+        value.parse().ok()
     }
 
     pub fn as_name(&self) -> &str {
@@ -49,7 +67,8 @@ impl VehicleType {
 }
 
 // 管轄監理單位
-#[derive(Debug, Copy, Clone, EnumIter, PartialEq, Eq, Hash)]
+#[derive(Debug, Copy, Clone, EnumIter, EnumString, AsRefStr, PartialEq, Eq, Hash)]
+#[strum(serialize_all = "camelCase")]
 pub enum Region {
     Taipei = 2,            // 臺北市
     Kaohsiung = 3,         // 高雄市
@@ -61,7 +80,7 @@ pub enum Region {
 }
 
 impl Region {
-    pub fn as_str(&self) -> &str {
+    pub fn value(&self) -> &str {
         match self {
             Region::Taipei => "2",
             Region::Kaohsiung => "3",
@@ -71,6 +90,14 @@ impl Region {
             Region::ChiayiDistrict => "7",
             Region::KaohsiungDistrict => "8",
         }
+    }
+
+    pub fn as_str(&self) -> &str {
+        self.as_ref()
+    }
+
+    pub fn from_str(value: &str) -> Option<Self> {
+        value.parse().ok()
     }
     pub fn as_name(&self) -> &str {
         match self {
@@ -86,18 +113,27 @@ impl Region {
 }
 
 // 能源別
-#[derive(Debug, Copy, Clone, EnumIter, PartialEq, Eq, Hash)]
+#[derive(Debug, Copy, Clone, EnumIter, EnumString, AsRefStr, PartialEq, Eq, Hash)]
+#[strum(serialize_all = "camelCase")]
 pub enum EnegryType {
     NonElectric, // 非電能
     Electric,    // 電能
 }
 
 impl EnegryType {
-    pub fn as_str(&self) -> &str {
+    pub fn value(&self) -> &str {
         match self {
             EnegryType::NonElectric => "C",
             EnegryType::Electric => "E",
         }
+    }
+
+    pub fn as_str(&self) -> &str {
+        self.as_ref()
+    }
+
+    pub fn from_str(value: &str) -> Option<Self> {
+        value.parse().ok()
     }
 
     pub fn as_name(&self) -> &str {
@@ -109,7 +145,8 @@ impl EnegryType {
 }
 
 // 車牌別
-#[derive(Debug, Copy, Clone, EnumIter, PartialEq, Eq, Hash)]
+#[derive(Debug, Copy, Clone, EnumIter, EnumString, AsRefStr, PartialEq, Eq, Hash)]
+#[strum(serialize_all = "camelCase")]
 pub enum PlateType {
     // 汽車(非電能)
     CarOwn,                  // 自用小客貨車
@@ -187,7 +224,7 @@ pub fn get_plate_type(vehicle_type: VehicleType, energy_type: EnegryType) -> Vec
 }
 
 impl PlateType {
-    pub fn as_str(&self) -> &str {
+    pub fn value(&self) -> &str {
         match self {
             PlateType::CarOwn => "1",
             PlateType::CarRent => "2",
@@ -214,6 +251,14 @@ impl PlateType {
             PlateType::TrailerOwn => "t",
             PlateType::TrailerBusiness => "u",
         }
+    }
+
+    pub fn as_str(&self) -> &str {
+        self.as_ref()
+    }
+
+    pub fn from_str(value: &str) -> Option<Self> {
+        value.parse().ok()
     }
 
     pub fn as_name(&self) -> &str {
@@ -304,7 +349,8 @@ impl PlateType {
 }
 
 // 監理站
-#[derive(Debug, Copy, Clone, EnumIter, PartialEq, Eq, Hash)]
+#[derive(Debug, Copy, Clone, EnumIter, EnumString, AsRefStr, PartialEq, Eq, Hash)]
+#[strum(serialize_all = "camelCase")]
 pub enum Station {
     // 臺北市
     TaipeiCity = 20, // 臺北市區監理所
@@ -406,7 +452,7 @@ pub fn get_station(region: Region) -> Vec<Station> {
 }
 
 impl Station {
-    pub fn as_str(&self) -> &str {
+    pub fn value(&self) -> &str {
         match self {
             Station::TaipeiCity => "20",
             Station::Shilin => "21",
@@ -446,6 +492,14 @@ impl Station {
             Station::Hengchun => "83",
             Station::Penghu => "84",
         }
+    }
+
+    pub fn as_str(&self) -> &str {
+        self.as_ref()
+    }
+
+    pub fn from_str(value: &str) -> Option<Self> {
+        value.parse().ok()
     }
     pub fn as_name(&self) -> &str {
         match self {
@@ -491,15 +545,24 @@ impl Station {
 }
 
 // 領牌地點(窗口地點)
-#[derive(Debug, Copy, Clone, EnumIter, PartialEq, Eq, Hash)]
+#[derive(Debug, Copy, Clone, EnumIter, EnumString, AsRefStr, PartialEq, Eq, Hash)]
+#[strum(serialize_all = "camelCase")]
 pub enum WindowNo {
     One = 1,
 }
 
 impl WindowNo {
-    pub fn as_str(&self) -> &str {
+    pub fn value(&self) -> &str {
         match self {
             WindowNo::One => "01",
         }
+    }
+
+    pub fn as_str(&self) -> &str {
+        self.as_ref()
+    }
+
+    pub fn from_str(value: &str) -> Option<Self> {
+        value.parse().ok()
     }
 }

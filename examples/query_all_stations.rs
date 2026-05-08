@@ -38,7 +38,7 @@ async fn main() -> anyhow::Result<()> {
                     options.plate_type.vehicle_type().as_name(),
                     options.region.as_name(),
                     options.station.as_name(),
-                    options.window_no.as_str()
+                    options.window_no.value()
                 );
 
                 let mut query_results = vec![];

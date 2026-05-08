@@ -114,11 +114,11 @@ impl Client {
 
         let payload = [
             ("method", "qryPickNo"),
-            ("selDeptCode", options.region.as_str()),
-            ("selStationCode", options.station.as_str()),
-            ("selWindowNo", options.window_no.as_str()),
-            ("selPlateType", options.plate_type.as_str()),
-            ("plateVer", options.plate_ver.as_str()),
+            ("selDeptCode", options.region.value()),
+            ("selStationCode", options.station.value()),
+            ("selWindowNo", options.window_no.value()),
+            ("selPlateType", options.plate_type.value()),
+            ("plateVer", options.plate_ver.value()),
             ("validateStr", captcha_text),
             ("queryType", "0"),
             ("queryNo", query_no.unwrap_or("*")),
