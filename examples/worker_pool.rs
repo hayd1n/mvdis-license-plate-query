@@ -11,15 +11,18 @@ async fn main() -> anyhow::Result<()> {
         plate_ver: PlateVer::New,
         plate_type: PlateType::Motorcycle550ccBelow,
         retry_times: 3,
-        // Optional: specify regions, default is all
-        // regions: Some(vec![mvdis_license_plate_query::options::Region::Taipei]),
+        // Optional: specify stations, default is all
+        // stations: Some(vec![
+        //     mvdis_license_plate_query::options::Station::TaipeiCity,
+        //     mvdis_license_plate_query::options::Station::Banqiao,
+        // ]),
         ..Default::default()
     };
 
     let client = PoolClient::new(options)?;
 
     println!(
-        "Querying region(s)... This may take a while. Concurrency: {}",
+        "Querying stations... This may take a while. Concurrency: {}",
         client.options().concurrency
     );
 
@@ -27,14 +30,12 @@ async fn main() -> anyhow::Result<()> {
 
     let mut total_plates = 0;
 
-    for (region, stations) in results.iter() {
-        for (station, plates) in stations {
-            println!("{} {}", region.as_name(), station.as_name());
-            for plate in plates {
-                println!("{} ${}", plate.plate_no, plate.price);
-            }
-            total_plates += plates.len();
+    for (station, plates) in results.iter() {
+        println!("{}", station.as_name());
+        for plate in plates {
+            println!("{} ${}", plate.plate_no, plate.price);
         }
+        total_plates += plates.len();
     }
 
     println!("Total plates: {}", total_plates);

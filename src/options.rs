@@ -561,6 +561,47 @@ impl Station {
             Station::Penghu => "澎湖監理站",
         }
     }
+
+    /// Get the region that this station belongs to.
+    pub fn region(&self) -> Region {
+        match self {
+            Station::TaipeiCity
+            | Station::Shilin
+            | Station::Keelung
+            | Station::Kinmen
+            | Station::Lienchiang => Region::Taipei,
+            Station::KaohsiungCity | Station::Lingya | Station::Qishan => Region::Kaohsiung,
+            Station::TaipeiDistrict
+            | Station::Banqiao
+            | Station::Yilan
+            | Station::Hualien
+            | Station::Yuli
+            | Station::Luzhou => Region::TaipeiDistrict,
+            Station::HsinchuDistrict
+            | Station::HsinchuCity
+            | Station::Taoyuan
+            | Station::Zhongli
+            | Station::Miaoli => Region::HsinchuDistrict,
+            Station::TaichungDistrict
+            | Station::TaichungCity
+            | Station::Puli
+            | Station::Fengyuan
+            | Station::Changhua
+            | Station::Nantou => Region::TaichungDistrict,
+            Station::ChiayiDistrict
+            | Station::Dongshi
+            | Station::Yunlin
+            | Station::Xinying
+            | Station::Tainan
+            | Station::Madou
+            | Station::ChiayiCity => Region::ChiayiDistrict,
+            Station::KaohsiungDistrict
+            | Station::Taitung
+            | Station::Pingtung
+            | Station::Hengchun
+            | Station::Penghu => Region::KaohsiungDistrict,
+        }
+    }
 }
 
 // 領牌地點(窗口地點)
